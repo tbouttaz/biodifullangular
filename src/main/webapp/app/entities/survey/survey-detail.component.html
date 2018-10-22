@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="survey">
+            <h2><span jhiTranslate="biodifullangularApp.survey.detail.title">Survey</span> {{survey.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="biodifullangularApp.survey.surveyName">Survey Name</span></dt>
+                <dd>
+                    <span>{{survey.surveyName}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.surveyDescription">Survey Description</span></dt>
+                <dd>
+                    <span>{{survey.surveyDescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.surveyURL">Survey URL</span></dt>
+                <dd>
+                    <span>{{survey.surveyURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.formURL">Form URL</span></dt>
+                <dd>
+                    <span>{{survey.formURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.challengersLocation">Challengers Location</span></dt>
+                <dd>
+                    <span>{{survey.challengersLocation}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.numberOfMatches">Number Of Matches</span></dt>
+                <dd>
+                    <span>{{survey.numberOfMatches}}</span>
+                </dd>
+                <dt><span jhiTranslate="biodifullangularApp.survey.open">Open</span></dt>
+                <dd>
+                    <span>{{survey.open}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/survey', survey.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

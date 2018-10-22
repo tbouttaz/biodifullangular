@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-survey-heading" jhiTranslate="biodifullangularApp.survey.home.createOrEditLabel">Create or edit a Survey</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!survey.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="survey.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.surveyName" for="field_surveyName">Survey Name</label>
+                    <input type="text" class="form-control" name="surveyName" id="field_surveyName"
+                        [(ngModel)]="survey.surveyName" required/>
+                    <div [hidden]="!(editForm.controls.surveyName?.dirty && editForm.controls.surveyName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surveyName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.surveyDescription" for="field_surveyDescription">Survey Description</label>
+                    <input type="text" class="form-control" name="surveyDescription" id="field_surveyDescription"
+                        [(ngModel)]="survey.surveyDescription" required/>
+                    <div [hidden]="!(editForm.controls.surveyDescription?.dirty && editForm.controls.surveyDescription?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surveyDescription?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.surveyURL" for="field_surveyURL">Survey URL</label>
+                    <input type="text" class="form-control" name="surveyURL" id="field_surveyURL"
+                        [(ngModel)]="survey.surveyURL" required/>
+                    <div [hidden]="!(editForm.controls.surveyURL?.dirty && editForm.controls.surveyURL?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surveyURL?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.formURL" for="field_formURL">Form URL</label>
+                    <input type="text" class="form-control" name="formURL" id="field_formURL"
+                        [(ngModel)]="survey.formURL" required/>
+                    <div [hidden]="!(editForm.controls.formURL?.dirty && editForm.controls.formURL?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.formURL?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.challengersLocation" for="field_challengersLocation">Challengers Location</label>
+                    <input type="text" class="form-control" name="challengersLocation" id="field_challengersLocation"
+                        [(ngModel)]="survey.challengersLocation" required/>
+                    <div [hidden]="!(editForm.controls.challengersLocation?.dirty && editForm.controls.challengersLocation?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.challengersLocation?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.numberOfMatches" for="field_numberOfMatches">Number Of Matches</label>
+                    <input type="number" class="form-control" name="numberOfMatches" id="field_numberOfMatches"
+                        [(ngModel)]="survey.numberOfMatches" required/>
+                    <div [hidden]="!(editForm.controls.numberOfMatches?.dirty && editForm.controls.numberOfMatches?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numberOfMatches?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.numberOfMatches?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="biodifullangularApp.survey.open" for="field_open">Open</label>
+                    <input type="checkbox" class="form-control" name="open" id="field_open"
+                        [(ngModel)]="survey.open" />
+                    <div [hidden]="!(editForm.controls.open?.dirty && editForm.controls.open?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.open?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
