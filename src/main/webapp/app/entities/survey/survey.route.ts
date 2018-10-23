@@ -11,6 +11,7 @@ import { SurveyDetailComponent } from './survey-detail.component';
 import { SurveyUpdateComponent } from './survey-update.component';
 import { SurveyDeletePopupComponent } from './survey-delete-dialog.component';
 import { ISurvey } from 'app/shared/model/survey.model';
+import { SurveyAnswerComponentComponent } from 'app/survey-answer-component/survey-answer-component.component';
 
 @Injectable({ providedIn: 'root' })
 export class SurveyResolve implements Resolve<ISurvey> {
@@ -38,6 +39,18 @@ export const surveyRoute: Routes = [
     {
         path: 'survey/:id/view',
         component: SurveyDetailComponent,
+        resolve: {
+            survey: SurveyResolve
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'biodifullangularApp.survey.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'survey/:id/answer',
+        component: SurveyAnswerComponentComponent,
         resolve: {
             survey: SurveyResolve
         },

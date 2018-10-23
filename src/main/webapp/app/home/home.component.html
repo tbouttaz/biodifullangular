@@ -29,7 +29,7 @@
         <ul>
             {{openSurveys}}
             <li *ngFor="let survey of openSurveys">
-                <a [routerLink]="['/survey', survey.id, 'view' ]">{{survey.surveyName}}</a>
+                <a [routerLink]="['/survey', survey.id, 'answer' ]">{{survey.surveyName}}</a>
             </li>
         </ul>
 

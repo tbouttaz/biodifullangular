@@ -1,0 +1,18 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate #editForm="ngForm">
+            <h2 id="jhi-survey-heading" >Answer the Survey {{survey.surveyName}}</h2>
+            <div>
+                {{survey.surveyDescription}}
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" class="btn btn-primary" (click)="nextMatchState()">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Answer</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
