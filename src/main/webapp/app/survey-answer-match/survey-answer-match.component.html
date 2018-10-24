@@ -1,0 +1,9 @@
+<p>
+  Cliquez sur la photo qui vous paraît la plus belle:
+</p>
+
+<jhi-survey-individual-match [challengerOne]="challengerOne" [challengerTwo]="challengerTwo" (winnerSelected)="addWinner($event)"></jhi-survey-individual-match>
+
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" [style.width.%]="getPercentAdvancement()" [attr.aria-valuenow]="getCurrentMatchNumber()" aria-valuemin="1" [attr.aria-valuemax]="nbOfMatches">Paire {{getCurrentMatchNumber()}} sur {{nbOfMatches}}</div>
+</div>

@@ -21,6 +21,8 @@ import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 import { SurveyAnswerComponentComponent } from './survey-answer-component/survey-answer-component.component';
+import { SurveyAnswerMatchComponent } from './survey-answer-match/survey-answer-match.component';
+import { SurveyIndividualMatchComponent } from './survey-individual-match/survey-individual-match.component';
 
 @NgModule({
     imports: [
@@ -34,7 +36,7 @@ import { SurveyAnswerComponentComponent } from './survey-answer-component/survey
         // jhipster-needle-angular-add-module JHipster will add new module here
         BiodifullangularEntityModule
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, SurveyAnswerComponentComponent],
+    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, SurveyAnswerComponentComponent, SurveyAnswerMatchComponent, SurveyIndividualMatchComponent],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,

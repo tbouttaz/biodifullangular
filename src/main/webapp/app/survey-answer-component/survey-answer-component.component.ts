@@ -39,7 +39,7 @@ export class SurveyAnswerComponentComponent implements OnInit {
   private subscribeToSaveResponse(result: Observable<HttpResponse<IAnswer>>) {
     result.subscribe((res: HttpResponse<IAnswer>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
   }
-  
+
   onSaveError(): void {
     alert("Save error :( ");
   }
