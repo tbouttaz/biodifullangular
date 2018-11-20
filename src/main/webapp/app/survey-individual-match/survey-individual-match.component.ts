@@ -19,8 +19,6 @@ export class SurveyIndividualMatchComponent implements OnInit {
 
   challengerClicked(challenger) {
     //TODO add start and end date to challenges 
-
-    alert('clicked! ' + challenger.id);
     this.winnerSelected.emit(challenger);
   }
 }

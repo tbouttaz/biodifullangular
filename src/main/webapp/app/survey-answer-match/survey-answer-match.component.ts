@@ -14,9 +14,11 @@ export class SurveyAnswerMatchComponent implements OnInit {
   survey: ISurvey;
   nbOfMatches: number;
   jugeId: string;
-  winners: Challenger[] = [];
+  // winners: Challenger[] = [];
+  answers: Answer[] = [];
   challengerOne: Challenger;
   challengerTwo: Challenger;
+  isAllMatchesCompleted: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
@@ -47,22 +49,25 @@ export class SurveyAnswerMatchComponent implements OnInit {
 
   addWinner(winner) {
     console.log("Winner added: " + JSON.stringify(winner));
-    //TODO save winner in Answer[]
-    this.winners.push(winner);
-    new Answer(undefined, this.jugeId, this.challengerOne.id, this.challengerTwo.id, winner.id, this.survey.id);
+    // Add a new Answer from the winner
+    this.answers.push(
+      new Answer(undefined, this.jugeId, this.challengerOne.id, this.challengerTwo.id, winner.id, this.survey.id)
+    );
 
     // Determine whether to display next challengers
-    if(this.winners.length < this.nbOfMatches) {
+    if(this.answers.length < this.nbOfMatches) {
       this.initNextMatch();
     } else {
       // if we've got enought winners, display socio-pro questions
       //TODO use Router to display next compo?
-      alert('display socio-pro questions');
+      console.log('Answers:');
+      console.log(JSON.stringify(this.answers));
+      this.isAllMatchesCompleted = true;
     }
   }
 
   getCurrentMatchNumber(): number {
-    return this.winners.length + 1;
+    return this.answers.length + 1;
   }
 
   getPercentAdvancement(): number {
