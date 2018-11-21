@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ISurvey } from 'app/shared/model/survey.model';
 import { Challenger } from 'app/shared/model/challenger.model';
 import { Answer } from 'app/shared/model/answer.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'jhi-survey-answer-match',
@@ -20,7 +22,7 @@ export class SurveyAnswerMatchComponent implements OnInit {
   challengerTwo: Challenger;
   isAllMatchesCompleted: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe(({ survey }) => {
@@ -33,7 +35,7 @@ export class SurveyAnswerMatchComponent implements OnInit {
 
     this.initNextMatch();
 
-    this.jugeId = '_' + Math.random().toString(36).substr(2, 9);
+    this.jugeId = 'juge_' + Math.random().toString(36).substr(2, 9);
   }
 
   initNextMatch() {
@@ -72,5 +74,9 @@ export class SurveyAnswerMatchComponent implements OnInit {
 
   getPercentAdvancement(): number {
     return this.getCurrentMatchNumber() * 100 / this.nbOfMatches;
+  }
+
+  getSocialFormUrl(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.survey.formURL + this.jugeId);
   }
 }
