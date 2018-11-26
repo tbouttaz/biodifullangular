@@ -56,7 +56,7 @@ export const surveyRoute: Routes = [
             survey: SurveyResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: [],
             pageTitle: 'biodifullangularApp.survey.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -68,7 +68,7 @@ export const surveyRoute: Routes = [
             survey: SurveyResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: [],
             pageTitle: 'biodifullangularApp.survey.home.title'
         },
         canActivate: [UserRouteAccessService]

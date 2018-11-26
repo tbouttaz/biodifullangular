@@ -15,7 +15,7 @@ export class SurveyAnswerMatchComponent implements OnInit {
 
   survey: ISurvey;
   nbOfMatches: number;
-  jugeId: string;
+  judgeId: string;
   // winners: Challenger[] = [];
   answers: Answer[] = [];
   challengerOne: Challenger;
@@ -35,7 +35,7 @@ export class SurveyAnswerMatchComponent implements OnInit {
 
     this.initNextMatch();
 
-    this.jugeId = 'juge_' + Math.random().toString(36).substr(2, 9);
+    this.judgeId = 'judge_' + Math.random().toString(36).substr(2, 9);
   }
 
   initNextMatch() {
@@ -53,7 +53,7 @@ export class SurveyAnswerMatchComponent implements OnInit {
     console.log("Winner added: " + JSON.stringify(winner));
     // Add a new Answer from the winner
     this.answers.push(
-      new Answer(undefined, this.jugeId, this.challengerOne.id, this.challengerTwo.id, winner.id, this.survey.id)
+      new Answer(undefined, this.judgeId, this.challengerOne.id, this.challengerTwo.id, winner.id, this.survey.id)
     );
 
     // Determine whether to display next challengers
@@ -61,7 +61,6 @@ export class SurveyAnswerMatchComponent implements OnInit {
       this.initNextMatch();
     } else {
       // if we've got enought winners, display socio-pro questions
-      //TODO use Router to display next compo?
       console.log('Answers:');
       console.log(JSON.stringify(this.answers));
       this.isAllMatchesCompleted = true;
@@ -77,6 +76,6 @@ export class SurveyAnswerMatchComponent implements OnInit {
   }
 
   getSocialFormUrl(): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.survey.formURL + this.jugeId);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.survey.formURL + this.judgeId);
   }
 }
